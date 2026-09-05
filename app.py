@@ -11,53 +11,18 @@ FORMSPREE_ID = "xljelqql"
 if "accepted" not in st.session_state:
     st.session_state.accepted = False
 
-# FIOLETOWY MOTYW CSS
 st.markdown("""
     <style>
-    /* Główne tło i kolor tekstu */
     .stApp {
-        background-color: #12091f;
-        color: #e2d9f3;
+        background-color: #1a1a1a;
+        color: #ffffff;
     }
     .main-title {
         text-align: center;
         font-size: 2.5rem;
         margin-bottom: 2rem;
-        color: #d8b4fe;
     }
-    /* Stylizacja przycisków */
-    div.stButton > button {
-        background-color: #7e22ce !important;
-        color: #ffffff !important;
-        border: 1px solid #a855f7 !important;
-        border-radius: 12px;
-    }
-    div.stButton > button:hover {
-        background-color: #9333ea !important;
-        border-color: #c084fc !important;
-    }
-    /* Pola formularza */
-    input, select, textarea {
-        background-color: #1e112a !important;
-        color: #ffffff !important;
-        border: 1px solid #6b21a8 !important;
-    }
-    /* Ukrycie paska narzędzi */
     div[data-testid="stElementToolbar"] { display: none; }
-    
-    /* Fioletowy napis końcowy */
-    .purple-quote {
-        color: #c084fc;
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-    }
-    .purple-sub {
-        color: #a855f7;
-        font-size: 1rem;
-        text-align: center;
-    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -83,7 +48,7 @@ if not st.session_state.accepted:
 
 # EKRAN 2: Wybór terminu na S8Race
 else:
-    st.markdown("<h1 class='main-title'>🏁 Wybierz termin jazdy</h1>", unsafe_allow_html=True)
+    st.title("🏁 Wybierz termin jazdy")
     
     with st.form("karting_form"):
         name = st.text_input("Twoje Imię")
@@ -117,10 +82,6 @@ else:
             
             if response.status_code == 200:
                 st.balloons()
-                st.success("Gotowe! Informacja o terminie poszła na e-mail!")
-                
-                # Fioletowy napis na końcu po zatwierdzeniu
-                st.markdown("<div class='purple-quote'>zabierz mnie do gwiazd, ten kolejny raz</div>", unsafe_allow_html=True)
-                st.markdown("<div class='purple-sub'>(półżartem jak coś)</div>", unsafe_allow_html=True)
+                st.success("zabierz mnie do gwiazd, ten kolejny raz ⭐🎵")
             else:
                 st.error("Wystąpił błąd podczas wysyłania.")
